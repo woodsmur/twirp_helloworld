@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package twirp.example.helloworld;
+option go_package = "helloworld";
+
+message GoodBye {
+    string UserID = 1;
+    string Message = 2;
+}
+
+message Hello {
+    string UserID = 1;
+    string Message = 2;
+}
+
+service AwesomeTwirpService {
+    rpc SayHello (Hello) returns (GoodBye);
+    rpc SayHelloTypesAsField  (ReqHello) returns (ResHello);
+}
+
+message ReqHello {
+    Hello Hello = 1;
+}
+
+message ResHello {
+    GoodBye GoodBye = 1;
+}
